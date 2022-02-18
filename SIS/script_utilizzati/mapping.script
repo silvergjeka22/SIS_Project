@@ -1,0 +1,9 @@
+echo "Mapping:"
+
+
+echo "Apertura libreria synch.genlib:"
+read_library synch.genlib
+
+echo "L'ottimizzazione del circuito per area:"
+map -m 0 -s
+

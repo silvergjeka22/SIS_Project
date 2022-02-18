@@ -1,0 +1,64 @@
+echo ""
+echo "Simulazione 5:"
+echo "inserimento del PIN è sbagliato per tre volte"
+echo "Il bancomat si blocca"
+echo "Sblocco e arrivo di un altro cliente ed erogazione (Rich:610, Disp:15250)"
+echo ""
+
+echo "Attesa bancomat:"
+sim 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+sim 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0
+
+echo ""
+echo "Inserimento bancomat"
+sim 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+
+echo ""
+echo "Inserimento PIN sbagliato al primo tentativo:"
+sim 0 0 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+sim 1 1 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+sim 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+
+echo ""
+echo "Inserimento PIN sbagliato al secondo tentativo:"
+sim 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+sim 1 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+sim 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+
+echo ""
+echo "Inserimento PIN sbagliato al terzo tentativo:"
+sim 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+sim 1 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+sim 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+
+echo ""
+echo "Blocco:"
+sim 1 0 0 1 1 0 1 0 1 0 1 1 1 1 0 0 0 0 0 0 1 0 1 0 1 1 1 1 0 0 0
+sim 1 0 1 0 1 1 1 1 1 1 0 1 1 1 1 0 0 0 0 1 1 0 0 0 0 0 1 0 0 0 0
+sim 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0
+
+
+echo ""
+echo "Esce dallo stato di blocco quando il bancomat è estratto":
+echo "Il bit bancomat_inserito a 0":
+sim 0 1 1 1 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0 0 1 0 0
+sim 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+
+echo ""
+echo "Nuovo bancomat:"
+sim 1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0
+
+echo ""
+echo "Inserimento PIN corretto al primo tentativo:"
+sim 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+sim 1 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+sim 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+
+echo ""
+echo "Check"
+sim 1 0 0 0 0 1 0 0 1 1 0 0 0 1 0 0 0 1 1 1 0 1 1 1 0 0 1 0 0 1 0 
+
+echo ""
+echo "continua e attesa nuovo cliente:"
+sim 0 0 0 0 0 1 0 0 1 1 0 0 0 1 0 0 0 1 1 1 0 1 1 1 0 0 1 0 0 1 0 
+sim 0 0 0 0 0 0 0 0 1 1 0 0 0 1 0 0 0 1 0 0 0 1 1 1 0 0 1 0 0 1 0 

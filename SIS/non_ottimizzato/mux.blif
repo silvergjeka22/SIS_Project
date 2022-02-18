@@ -1,0 +1,18 @@
+#------------------
+# mux a 2 ingressi
+# 1 bit ciascuno
+# selettore 1 bit
+# 1: input a
+# 0: input b
+#------------------
+
+.model MUX1
+.inputs S A B 
+.outputs O
+
+.names S A B O
+
+0-1 1
+11- 1
+
+.end

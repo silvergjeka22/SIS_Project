@@ -1,0 +1,80 @@
+#--------------------------------------------------------------
+#   contatore tentativi:
+#   CONTA[1] = se necessario da l'avvio al contatore
+#   CHECK[1] = check_disponibilità, necessario per valutare il possibile 
+#   reset del registro
+#   BLOCCA[1] = se necessario blocca la richiesta di un nuovo pin,
+#   in uscita verso FSM
+#
+#     x1,x0 = variabile output mux (conta)
+#     iRg1, iRg0 = variabile input registro2
+#     oRg1, oRg0 = variabile output registro 2
+#     s1, s0 = risultato della somma
+#---------------------------------------------------------------
+
+.model COUNTER
+.inputs CONTA CHECK 
+.outputs BLOCCA
+
+# definizione costante 0 a 1 bit
+.names ZERO
+
+# definizione delle costanti a 2 bit 
+# costanti 0 e 1
+
+.subckt COST0 O1=CO1 O0=CO0
+.subckt COST1 O1=CO3 O0=CO2
+.subckt COST3 O1=CO5 O0=CO4
+
+# instanziazione del multiplexer che seleziona tra 0 e 1
+# come parte dell'input per il sommatore del registro
+.subckt MUX2 SEL=CONTA inA1=CO3 inA0=CO2 inB1=CO1 inB0=CO0 out1=x1 out0=x0
+
+
+# instanziazione del sommatore che incrementa, se necessario, il valore del
+# registro che tiene conto del numero di tentativi effettuati
+.subckt SUM2 A1=x1 A0=x0 B1=oRg1 B0=oRg0 CIN=ZERO O1=s1 O0=s0 COUT=COUT
+
+.subckt OR A=CHECK B=BLOCCA X=rOr
+
+# instanziazione del multiplexer che seleziona tra reset (0)
+# e il valore da sommare nel registro
+.subckt MUX2 SEL=rOr inA1=CO1 inA0=CO0 inB1=s1 inB0=s0 out1=iRg1 out0=iRg0
+
+# instanziazione del registro  che memorizza il contatore dei tentativi
+.subckt REG2 A1=iRg1 A0=iRg0 O1=oRg1 O0=oRg0
+
+# istanziazione del comparatore che verifica se il valore del registro è 3
+.subckt UGUALE2 A1=oRg1 A0=oRg0 B1=CO5 B0=CO4 OUT=BLOCCA
+
+# modello della costante 0 su 2 bit
+.model COST0
+.outputs O1 O0
+.names O1
+.names O0
+.end
+
+# modello della costante 1 su 2 bit
+.model COST1
+.outputs O1 O0
+.names O1
+.names O0
+1
+.end
+
+# modello della costante 3 su 2 bit
+.model COST3
+.outputs O1 O0
+.names O1
+1
+.names O0
+1
+.end
+
+
+# file dove trovare i modelli richiamati
+.search mux2.blif
+.search uguale2.blif
+.search registro2.blif
+.search sum2.blif
+.search or.blif

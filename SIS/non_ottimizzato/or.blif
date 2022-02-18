@@ -1,0 +1,13 @@
+#------------------------------------------------
+#   OR
+#   Ritorna 1 quando almeno uno dei due bit è 1
+#------------------------------------------------
+
+.model OR
+.inputs A B
+.outputs X
+
+.names A B X
+00 0
+ 
+.end

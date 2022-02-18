@@ -1,0 +1,24 @@
+#-------------------------------
+#   MUX a 2 ingressi
+#   10 bit ciascuno
+#   selettore a 1 bit
+#-------------------------------
+
+.model MUX2_10b
+.inputs SEL inA9 inA8 inA7 inA6 inA5 inA4 inA3 inA2 inA1 inA0 \
+inB9 inB8 inB7 inB6 inB5 inB4 inB3 inB2 inB1 inB0
+.outputs out9 out8 out7 out6 out5 out4 out3 out2 out1 out0
+
+.subckt MUX1 S=SEL A=inA9 B=inB9 O=out9
+.subckt MUX1 S=SEL A=inA8 B=inB8 O=out8
+.subckt MUX1 S=SEL A=inA7 B=inB7 O=out7
+.subckt MUX1 S=SEL A=inA6 B=inB6 O=out6
+.subckt MUX1 S=SEL A=inA5 B=inB5 O=out5
+.subckt MUX1 S=SEL A=inA4 B=inB4 O=out4
+.subckt MUX1 S=SEL A=inA3 B=inB3 O=out3
+.subckt MUX1 S=SEL A=inA2 B=inB2 O=out2
+.subckt MUX1 S=SEL A=inA1 B=inB1 O=out1
+.subckt MUX1 S=SEL A=inA0 B=inB0 O=out0
+
+.search mux.blif
+.end

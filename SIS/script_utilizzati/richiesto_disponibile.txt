@@ -1,0 +1,17 @@
+Richiesto   Disponibile     OK
+
+128         250             no  0   errore in sim
+128         580             si  1
+1000        5120            si  1
+350         1400            no  0
+12          1005            si  1
+60          20500           si  1
+158         500             no  0
+478         945             no  0
+460         30000           si  1
+610         15250           si  1
+80          1200            si  1
+87          250             no  0
+0           0               no  0
+1000        45852           si  1
+

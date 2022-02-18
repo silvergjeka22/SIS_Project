@@ -1,0 +1,20 @@
+#-------------------------
+#   Costante con valore 0
+#   (a 10 bit)
+#-------------------------
+
+.model ZEROC10
+.outputs O9 O8 O7 O6 O5 O4 O3 O2 O1 O0
+
+.subckt ZEROC O=O9
+.subckt ZEROC O=O8
+.subckt ZEROC O=O7
+.subckt ZEROC O=O6
+.subckt ZEROC O=O5
+.subckt ZEROC O=O4
+.subckt ZEROC O=O3
+.subckt ZEROC O=O2
+.subckt ZEROC O=O1
+.subckt ZEROC O=O0
+
+.search zero1b.blif

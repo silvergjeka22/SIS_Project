@@ -1,0 +1,36 @@
+#--------------------------------------------------------------
+# Il modello permette di estendere un input da 10 bit in 16 bit
+# Vengono aggiunti 6 bit a 0 a sinistra, il numero rimane positivo
+# e mantiene lo stesso valore.
+#--------------------------------------------------------------
+
+.model EXTENDER
+.inputs i9 i8 i7 i6 i5 i4 i3 i2 i1 i0
+.outputs o15 o14 o13 o12 o11 o10 o9 o8 o7 o6 o5 o4 o3 o2 o1 o0
+.names o15
+.names o14
+.names o13
+.names o12
+.names o11
+.names o10
+.names i9 o9
+1 1
+.names i8 o8
+1 1
+.names i7 o7
+1 1
+.names i6 o6
+1 1
+.names i5 o5
+1 1
+.names i4 o4
+1 1
+.names i3 o3
+1 1
+.names i2 o2
+1 1
+.names i1 o1
+1 1
+.names i0 o0
+1 1
+.end

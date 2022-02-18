@@ -1,0 +1,9 @@
+#------------------------
+#   Costante 0 a 1 bit
+#------------------------
+
+.model ZEROC
+.outputs O
+.names O
+
+.end

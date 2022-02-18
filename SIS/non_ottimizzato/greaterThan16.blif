@@ -1,0 +1,60 @@
+#-----------------------------------------------------
+#   Maggiore a 16 bit
+#      controlla se il primo numero(a) è maggiore
+#      del secondo numero(b).
+#      return 1 se a > b
+#
+#   Da integrare semplificando: i primi 4 bit significativi 
+#   sono sempre a zero, si potrebbe evitare di controllarli
+#-----------------------------------------------------
+
+.model AgrTB_16
+.inputs A15 A14 A13 A12 A11 A10 A9 A8 A7 A6 A5 A4 A3 A2 A1 A0 \
+B15 B14 B13 B12 B11 B10 B9 B8 B7 B6 B5 B4 B3 B2 B1 B0
+.outputs greater
+
+# confronta bit a bit la prima e la seconda variabile
+# output z (segnale interno) a 1 solo se i bit sono diversi
+
+.subckt XOR x=A15 y=B15 z=x15
+.subckt XOR x=A14 y=B14 z=x14
+.subckt XOR x=A13 y=B13 z=x13
+.subckt XOR x=A12 y=B12 z=x12
+.subckt XOR x=A11 y=B11 z=x11
+.subckt XOR x=A10 y=B10 z=x10
+.subckt XOR x=A9 y=B9 z=x9
+.subckt XOR x=A8 y=B8 z=x8
+.subckt XOR x=A7 y=B7 z=x7
+.subckt XOR x=A6 y=B6 z=x6
+.subckt XOR x=A5 y=B5 z=x5
+.subckt XOR x=A4 y=B4 z=x4
+.subckt XOR x=A3 y=B3 z=x3
+.subckt XOR x=A2 y=B2 z=x2
+.subckt XOR x=A1 y=B1 z=x1
+.subckt XOR x=A0 y=B0 z=x0
+
+
+# confronta bit a bit la prima variabile e il risultato dello xor
+.names A15 A14 A13 A12 A11 A10 A9 A8 A7 A6 A5 A4 A3 A2 A1 A0 \
+x15 x14 x13 x12 x11 x10 x9 x8 x7 x6 x5 x4 x3 x2 x1 x0 greater
+
+1---------------1--------------- 1
+-1--------------01-------------- 1
+--1-------------001------------- 1
+---1------------0001------------ 1
+----1-----------00001----------- 1
+-----1----------000001---------- 1
+------1---------0000001--------- 1
+-------1--------00000001-------- 1
+--------1-------000000001------- 1
+---------1------0000000001------ 1
+----------1-----00000000001----- 1
+-----------1----000000000001---- 1
+------------1---0000000000001--- 1
+-------------1--00000000000001-- 1
+--------------1-000000000000001- 1
+---------------10000000000000001 1
+
+.search xor.blif
+.end
+

@@ -1,0 +1,101 @@
+.model ELABORAZIONE
+.inputs R9 R8 R7 R6 R5 R4 R3 R2 R1 R0 D15 D14 D13 D12 D11 D10 D9 D8 D7 D6 D5 \
+D4 D3 D2 D1 D0 CONTA CHECK
+.outputs CASH_OK BLOCCA E9 E8 E7 E6 E5 E4 E3 E2 E1 E0
+.latch    CHECK regS re NIL 0
+.latch    iRg1 oRg1 re NIL 0
+.latch    iRg0 oRg0 re NIL 0
+.names D15 D14 D13 D12 D11 x11 regS [2761] CASH_OK
+1-----1- 1
+-1----1- 1
+--1---1- 1
+---1--1- 1
+----111- 1
+-----011 1
+.names oRg1 oRg0 BLOCCA
+11 1
+.names R9 CASH_OK E9
+11 1
+.names R8 CASH_OK E8
+11 1
+.names R7 CASH_OK E7
+11 1
+.names R6 CASH_OK E6
+11 1
+.names R5 CASH_OK E5
+11 1
+.names R4 CASH_OK E4
+11 1
+.names R3 CASH_OK E3
+11 1
+.names R2 CASH_OK E2
+11 1
+.names R1 CASH_OK E1
+11 1
+.names R0 CASH_OK E0
+11 1
+.names R9 D11 x11
+01 1
+10 1
+.names R8 D10 x10
+01 1
+10 1
+.names R7 D9 x9
+01 1
+10 1
+.names R6 D8 x8
+01 1
+10 1
+.names R5 D7 x7
+01 1
+10 1
+.names R4 D6 x6
+01 1
+10 1
+.names R3 D5 x5
+01 1
+10 1
+.names R2 D4 x4
+01 1
+10 1
+.names CONTA CHECK BLOCCA oRg1 oRg0 iRg1
+-001- 1
+10-01 1
+.names CONTA CHECK BLOCCA oRg0 iRg0
+10-0 1
+0001 1
+.names R1 D4 D3 x4 [2752] [2760] [2745]
+-1-1-- 1
+0-10-- 1
+---011 1
+.names R1 D3 [2752]
+0- 1
+-1 1
+.names D5 x5 [2745] [2753]
+11- 1
+-01 1
+.names R0 D2 [2754]
+0- 1
+-1 1
+.names D6 x6 [2753] [2755]
+11- 1
+-01 1
+.names D7 x7 [2755] [2756]
+11- 1
+-01 1
+.names D8 x8 [2756] [2757]
+11- 1
+-01 1
+.names D1 D0 [2758]
+1- 1
+-1 1
+.names D9 x9 [2757] [2759]
+11- 1
+-01 1
+.names R0 D2 [2754] [2758] [2760]
+01-- 1
+--11 1
+.names D10 x10 [2759] [2761]
+11- 1
+-01 1
+.end

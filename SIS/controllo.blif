@@ -1,0 +1,118 @@
+.model FSM
+.inputs B_IN C3 C2 C1 C0 OK BL
+.outputs R AB BB CD TC
+.latch    [17] LatchOut_v7   0
+.latch    [18] LatchOut_v8   1
+.latch    [19] LatchOut_v9   1
+.latch    [20] LatchOut_v10   0
+.start_kiss
+.i 7
+.o 5
+.p 29
+.s 9
+.r BI
+0------ BI BI 00000
+1------ BI C1 00000
+-0101-- C1 C2 00000
+-1----- C1 C2E 00000
+--0---- C1 C2E 00000
+---1--- C1 C2E 00000
+----0-- C1 C2E 00000
+-0101-- C2 C3 00001
+-1----- C2 C3E 00001
+--0---- C2 C3E 00001
+---1--- C2 C3E 00001
+----0-- C2 C3E 00001
+------- C2E C3E 00001
+-0000-- C3 CD 00010
+-1----0 C3 C1 10000
+--1---0 C3 C1 10000
+---1--0 C3 C1 10000
+----1-0 C3 C1 10000
+-1----1 C3 B 00100
+--1---1 C3 B 00100
+---1--1 C3 B 00100
+----1-1 C3 B 00100
+------1 C3E B 00100
+------0 C3E C1 10000
+-----1- CD AE 01000
+-----0- CD BI 00000
+1------ B B 00100
+0------ B BI 00000
+------- AE BI 00000
+.end_kiss
+.latch_order LatchOut_v7 LatchOut_v8 LatchOut_v9 LatchOut_v10
+.code BI 0110
+.code C1 1110
+.code C2 1101
+.code C2E 1001
+.code C3 1111
+.code C3E 1011
+.code CD 1000
+.code B 1100
+.code AE 0010
+.names B_IN LatchOut_v8 LatchOut_v10 [20] [17]
+--1- 1
+---1 1
+11-- 1
+.names C3 C2 C1 C0 LatchOut_v8 [20] AB CD [18]
+-----000 1
+01011--- 1
+.names [20] BB CD TC [19]
+---1 1
+000- 1
+.names LatchOut_v7 LatchOut_v9 LatchOut_v10 TC [20]
+---1 1
+110- 1
+.names BL LatchOut_v10 CD TC R
+0100 1
+.names OK LatchOut_v8 LatchOut_v9 LatchOut_v10 AB
+1000 1
+.names B_IN LatchOut_v8 LatchOut_v9 LatchOut_v10 R CD TC BB
+110---0 1
+---1000 1
+.names C3 C2 C1 C0 LatchOut_v8 LatchOut_v9 LatchOut_v10 CD
+0000111 1
+.names LatchOut_v9 LatchOut_v10 TC
+01 1
+.exdc 
+.inputs B_IN C3 C2 C1 C0 OK BL LatchOut_v7 LatchOut_v8 LatchOut_v9 \
+LatchOut_v10
+.outputs [17] [18] [19] [20] R AB BB CD TC
+.names LatchOut_v7 LatchOut_v8 LatchOut_v9 LatchOut_v10 [17]
+0-0- 1
+0--1 1
+1010 1
+.names LatchOut_v7 LatchOut_v8 LatchOut_v9 LatchOut_v10 [18]
+0-0- 1
+0--1 1
+1010 1
+.names LatchOut_v7 LatchOut_v8 LatchOut_v9 LatchOut_v10 [19]
+0-0- 1
+0--1 1
+1010 1
+.names LatchOut_v7 LatchOut_v8 LatchOut_v9 LatchOut_v10 [20]
+0-0- 1
+0--1 1
+1010 1
+.names LatchOut_v7 LatchOut_v8 LatchOut_v9 LatchOut_v10 R
+0-0- 1
+0--1 1
+1010 1
+.names LatchOut_v7 LatchOut_v8 LatchOut_v9 LatchOut_v10 AB
+0-0- 1
+0--1 1
+1010 1
+.names LatchOut_v7 LatchOut_v8 LatchOut_v9 LatchOut_v10 BB
+0-0- 1
+0--1 1
+1010 1
+.names LatchOut_v7 LatchOut_v8 LatchOut_v9 LatchOut_v10 CD
+0-0- 1
+0--1 1
+1010 1
+.names LatchOut_v7 LatchOut_v8 LatchOut_v9 LatchOut_v10 TC
+0-0- 1
+0--1 1
+1010 1
+.end

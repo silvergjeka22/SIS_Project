@@ -1,0 +1,47 @@
+echo "Bancomato fuori poi inserito"
+
+simulate 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+simulate 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+
+
+
+echo " PRIMO TENTATIVO"
+echo "----------------"
+
+echo "prima cifra corretta, vado in C1"
+simulate 0 0 1 0 1 0 1 1 1 1 1 1 1 1 1 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1
+
+echo "Seconda cifra sbagliata, vado in C2E"
+simulate 0 0 0 0 1 0 1 1 1 1 1 1 1 1 1 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1
+
+echo "Terza cifra qualunque, vado in C3E"
+simulate 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1
+
+
+echo "SECONDO TENTATIVO"
+
+echo " Prima cifra corretta, vado in C1"
+simulate 0 0 1 0 1 0 1 1 1 1 1 1 1 1 1 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1
+
+echo "Seconda cifra sbagliata, vado in C2E"
+simulate 0 0 0 0 1 0 1 1 1 1 1 1 1 1 1 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1
+
+echo "Terza cifra qualunque, vado in C3E"
+simulate 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1
+
+
+
+echo "TERZO TENTATIVO"
+echo "---------------"
+
+echo "Prima cifra corretta, vado in C1"
+simulate 0 0 1 0 1 0 1 1 1 1 1 1 1 1 1 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1
+
+echo "Seconda cifra corretta, vado in C2"
+simulate 0 0 1 0 1 0 1 1 1 1 1 1 1 1 1 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1
+
+echo "Terza cifra sbagliata, vado in c3e"
+simulate 0 0 0 1 0 0 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1
+
+
+simulate 0 0 0 0 0 0 0 0 0 1 1 0 0 1 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1

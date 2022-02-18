@@ -1,0 +1,26 @@
+echo ""
+echo "Simulazione 2:"
+echo "Pin corretto al primo tentativo"
+echo "Erogazione NON possibile (Rich: 128/ Disp: 250)"
+echo ""
+
+echo "Attesa bancomat:"
+sim 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+
+echo ""
+echo "Inserimento bancomat"
+sim 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+
+echo ""
+echo "Inserimento PIN corretto al primo tentativo (550):"
+sim 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+sim 1 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+sim 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+
+echo ""
+echo "Attivazione check:"
+sim 1 1 0 1 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 0 1 0
+
+echo ""
+echo "Continua":
+sim 0 1 1 1 1 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 0 0 0 1 0 0

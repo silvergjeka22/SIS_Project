@@ -1,0 +1,16 @@
+#-------------------------
+#   MUX2, selettore a un bit
+#   2 inputs a 2 bit e output a 2 bit
+#-------------------------
+
+.model MUX2
+.inputs SEL inA1 inA0 inB1 inB0
+.outputs out1 out0
+
+.subckt MUX1 S=SEL A=inA1 B=inB1 O=out1
+.subckt MUX1 S=SEL A=inA0 B=inB0 O=out0
+
+.search mux.blif
+.end
+
+

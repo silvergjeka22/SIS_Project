@@ -1,0 +1,41 @@
+echo "Inserimento bancomat"
+
+simulate 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+simulate 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+
+
+echo ""
+echo "Primo tentativo"
+echo ""
+
+echo " Prima cifra corretta"
+simulate 0 0 1 0 1 0 1 1 1 1 1 1 1 1 1 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1
+
+echo "Seconda cifra sbagliata"
+simulate 0 0 0 0 1 0 1 1 1 1 1 1 1 1 1 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1
+
+echo "Terza cifra qualunque"
+simulate 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1
+
+echo ""
+echo "Secondo tentativo: corretto"
+echo ""
+
+echo "Prima cifra"
+simulate 1 0 1 0 1 0 1 1 1 1 1 1 1 1 1 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1
+
+echo " Seconda cifra"
+simulate 0 0 1 0 1 0 1 1 1 1 1 1 1 1 1 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1
+
+echo "Terza cifra"
+simulate 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1
+
+
+echo ""
+echo " Ora viene considerata la sequenza dei soldi richiesti"
+echo "Chiedo 1023 euro e ne ho 8191"
+
+simulate 0 0 0 0 0 1 1 0 0 1 1 0 1 1 1 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1
+
+
+simulate 1 0 0 0 0 0 0 0 0 1 1 0 0 1 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1

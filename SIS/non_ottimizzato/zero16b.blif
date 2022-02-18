@@ -1,0 +1,25 @@
+#-----------------------
+#   costante 16 bit a 0
+#-----------------------
+
+.model ZEROC16
+.outputs o15 o14 o13 o12 o11 o10 o9 o8 o7 o6 o5 o4 o3 o2 o1 o0
+
+.subckt ZEROC O=o15
+.subckt ZEROC O=o14
+.subckt ZEROC O=o13
+.subckt ZEROC O=o12
+.subckt ZEROC O=o11
+.subckt ZEROC O=o10
+.subckt ZEROC O=o9
+.subckt ZEROC O=o8
+.subckt ZEROC O=o7
+.subckt ZEROC O=o6
+.subckt ZEROC O=o5
+.subckt ZEROC O=o4
+.subckt ZEROC O=o3
+.subckt ZEROC O=o2
+.subckt ZEROC O=o1
+.subckt ZEROC O=o0
+
+.search zero1b.blif

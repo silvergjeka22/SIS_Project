@@ -1,0 +1,33 @@
+
+read_blif controllo.blif
+
+echo "File controllo.blif"
+echo ""
+
+echo "state_minimize stamina:"
+state_minimize stamina
+
+echo "state_assign jedi:"
+state_assign jedi
+
+print_stats
+
+echo "--------------------"
+echo "Ottimizzazione:"
+echo ""
+
+
+echo "full_simplify:"
+full_simplify
+print_stats
+
+echo "source script.rugged:"
+source script.rugged
+print_stats
+
+echo "fx:"
+fx
+print_stats
+
+
+

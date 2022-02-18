@@ -1,0 +1,132 @@
+.model FSMD
+.inputs BI COD3 COD2 COD1 COD0 R9 R8 R7 R6 R5 R4 R3 R2 R1 R0 D15 D14 D13 D12 \
+D11 D10 D9 D8 D7 D6 D5 D4 D3 D2 D1 D0
+.outputs RC AE BB E9 E8 E7 E6 E5 E4 E3 E2 E1 E0
+.latch    CHECK regS re NIL 0
+.latch    iRg1 oRg1 re NIL 0
+.latch    iRg0 oRg0 re NIL 0
+.latch    [17] LatchOut_v7   0
+.latch    [18] LatchOut_v8   1
+.latch    [19] LatchOut_v9   1
+.latch    [20] LatchOut_v10   0
+.names CHECK [3655] [3664] RC
+011 1
+.names CASH_OK LatchOut_v8 LatchOut_v9 LatchOut_v10 AE
+1000 1
+.names BI RC CHECK LatchOut_v10 LatchOut_v8 LatchOut_v9 [3655] BB
+-00---1 1
+1--010- 1
+.names R9 CASH_OK E9
+11 1
+.names R8 CASH_OK E8
+11 1
+.names R7 CASH_OK E7
+11 1
+.names R6 CASH_OK E6
+11 1
+.names R5 CASH_OK E5
+11 1
+.names R4 CASH_OK E4
+11 1
+.names R3 CASH_OK E3
+11 1
+.names R2 CASH_OK E2
+11 1
+.names R1 CASH_OK E1
+11 1
+.names R0 CASH_OK E0
+11 1
+.names D15 D14 D13 D12 D11 x11 regS [3666] CASH_OK
+1-----1- 1
+-1----1- 1
+--1---1- 1
+---1--1- 1
+----111- 1
+-----011 1
+.names COD3 COD2 COD1 COD0 LatchOut_v8 [3655] CHECK
+000011 1
+.names R9 D11 x11
+01 1
+10 1
+.names CHECK oRg1 oRg0 iRg0 [3653] iRg1
+010-- 1
+-0-01 1
+.names CHECK oRg1 oRg0 [3653] iRg0
+--01 1
+0010 1
+.names R8 D10 x10
+01 1
+10 1
+.names R7 D9 x9
+01 1
+10 1
+.names R6 D8 x8
+01 1
+10 1
+.names R5 D7 x7
+01 1
+10 1
+.names R4 D6 x6
+01 1
+10 1
+.names R3 D5 x5
+01 1
+10 1
+.names R2 D4 x4
+01 1
+10 1
+.names BI LatchOut_v8 LatchOut_v10 [20] [17]
+--1- 1
+---1 1
+11-- 1
+.names LatchOut_v10 LatchOut_v9 LatchOut_v7 [3653] [20]
+---1 1
+011- 1
+.names COD3 COD2 COD1 COD0 LatchOut_v8 [20] AE CHECK [18]
+-----000 1
+01011--- 1
+.names BB CHECK [20] [3653] [19]
+---1 1
+000- 1
+.names R1 D4 D3 x4 [3656] [3665] [3646]
+-1-1-- 1
+0-10-- 1
+---011 1
+.names LatchOut_v10 LatchOut_v9 [3653]
+10 1
+.names LatchOut_v10 LatchOut_v9 [3655]
+11 1
+.names R1 D3 [3656]
+0- 1
+-1 1
+.names D5 x5 [3646] [3657]
+11- 1
+-01 1
+.names R0 D2 [3658]
+0- 1
+-1 1
+.names D6 x6 [3657] [3659]
+11- 1
+-01 1
+.names D7 x7 [3659] [3660]
+11- 1
+-01 1
+.names D8 x8 [3660] [3661]
+11- 1
+-01 1
+.names D1 D0 [3662]
+1- 1
+-1 1
+.names D9 x9 [3661] [3663]
+11- 1
+-01 1
+.names oRg1 oRg0 [3664]
+0- 1
+-0 1
+.names R0 D2 [3658] [3662] [3665]
+01-- 1
+--11 1
+.names D10 x10 [3663] [3666]
+11- 1
+-01 1
+.end

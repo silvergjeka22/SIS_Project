@@ -1,0 +1,84 @@
+#-------------------------------------------------  
+#
+#   Esegue solo il controllo sul cash disponibile.
+#
+#   CHK[1] = check_disponibilità  
+#   CR[10] = cash richiesto
+#   CD[16] = cash disponibile
+# 
+#   OK[1] = cash_ok
+#   CDE[10] = cash da erogare   
+#   
+#-------------------------------------------------
+
+.model CHECK_D
+.inputs CHK CR9 CR8 CR7 CR6 CR5 CR4 CR3 CR2 CR1 CR0 CD15 CD14 CD13 CD12 CD11 CD10 CD9 CD8 CD7 CD6 CD5 CD4 CD3 CD2 CD1 CD0  
+.outputs OK CDE9 CDE8 CDE7 CDE6 CDE5 CDE4 CDE3 CDE2 CDE1 CDE0
+
+
+# instanzazione delle costanti:
+# costante 0 a 10 bit
+.subckt ZEROC10 O9=ZCR9 O8=ZCR8 O7=ZCR7 O6=ZCR6 O5=ZCR5 O4=ZCR4 O3=ZCR3 O2=ZCR2 O1=ZCR1 O0=ZCR0
+
+# costante 0 a 16 bit
+.subckt ZEROC16 o15=ZCD15 o14=ZCD14 o13=ZCD13 o12=ZCD12 o11=ZCD11 o10=ZCD10 o9=ZCD9 o8=ZCD8 o7=ZCD7 o6=ZCD6 o5=ZCD5 o4=ZCD4 o3=ZCD3\
+o2=ZCD2 o1=ZCD1 o0=ZCD0
+
+# instanziazione del registro per memorizzare check_disponibilità
+.subckt REG1 in=CHK out=regS
+
+# multiplexer che seleziona tra 0 e il valore dell'input cash_richiesto (CR)
+# CR viene selezionato solo se check_disponibilità (CHK) è 1
+
+.subckt MUX2_10b SEL=regS inA9=CR9 inA8=CR8 inA7=CR7 inA6=CR6 inA5=CR5 inA4=CR4 inA3=CR3 inA2=CR2 inA1=CR1 inA0=CR0 \
+inB9=ZCR9 inB8=ZCR8 inB7=ZCR7 inB6=ZCR6 inB5=ZCR5 inB4=ZCR4 inB3=ZCR3 inB2=ZCR2 inB1=ZCR1 inB0=ZCR0 \
+out9=MR9 out8=MR8 out7=MR7 out6=MR6 out5=MR5 out4=MR4 out3=MR3 out2=MR2 out1=MR1 out0=MR0
+
+# mux a 16 bit
+# seleziona tra cash_disponibile e una costante  0 in base al segnale CHK
+
+.subckt MUX2_16b SEL=regS inA15=CD15 inA14=CD14 inA13=CD13 inA12=CD12 inA11=CD11 inA10=CD10 inA9=CD9 inA8=CD8 inA7=CD7 inA6=CD6 inA5=CD5 \ inA4=CD4 inA3=CD3 inA2=CD2 inA1=CD1 inA0=CD0 inB15=ZCD15 inB14=ZCD14 inB13=ZCD13 inB12=ZCD12 inB11=ZCD11 inB10=ZCD10 inB9=ZCD9 inB8=ZCD8 \ inB7=ZCD7 inB6=ZCD6 inB5=ZCD5 inB4=ZCD4 inB3=ZCD3 inB2=ZCD2 inB1=ZCD1 inB0=ZCD0 out15=MD15 out14=MD14 out13=MD13 out12=MD12 out11=MD11 \ out10=MD10 out9=MD9 out8=MD8 out7=MD7 out6=MD6 out5=MD5 out4=MD4 out3=MD3 out2=MD2 out1=MD1 out0=MD0
+
+
+# il numero a 10 bit viene esteso ad un numero a 16 bit
+.subckt EXTENDER i9=MR9 i8=MR8 i7=MR7 i6=MR6 i5=MR5 i4=MR4 i3=MR3 i2=MR2 i1=MR1 i0=MR0 \
+o15=ex15 o14=ex14 o13=ex13 o12=ex12 o11=ex11 o10=ex10 o9=ex9 o8=ex8 o7=ex7 o6=ex6 o5=ex5 o4=ex4 o3=ex3 o2=ex2 o1=ex1 o0=ex0
+
+# viene istanziato lo shifter a sx di una posizione
+# il numero viene moltiplicato per 2
+
+.subckt SHIFT_sx16 in15=ex15 in14=ex14 in13=ex13 in12=ex12 in11=ex11 in10=ex10 in9=ex9 in8=ex8 in7=ex7 \
+in6=ex6 in5=ex5 in4=ex4 in3=ex3 in2=ex2 in1=ex1 in0=ex0 \
+out15=P15 out14=P14 out13=P13 out12=P12 out11=P11 out10=P10 out9=P9 out8=P8 out7=P7 out6=P6 \
+out5=P5 out4=P4 out3=P3 out2=P2 out1=P1 out0=P0
+
+# il numero ottenuto viene moltiplicato per 2, ottenendo una moltiplicazione finale per 4
+.subckt SHIFT_sx16 in15=P15 in14=P14 in13=P13 in12=P12 in11=P11 in10=P10 in9=P9 in8=P8 in7=P7 \
+in6=P6 in5=P5 in4=P4 in3=P3 in2=P2 in1=P1 in0=P0 \
+out15=R15 out14=R14 out13=R13 out12=R12 out11=R11 out10=R10 out9=R9 out8=R8 out7=R7 out6=R6 \
+out5=R5 out4=R4 out3=R3 out2=R2 out1=R1 out0=R0
+
+
+# instanziazione del maggiore
+# restituisce 1 se CD > 4*CR
+
+.subckt AgrTB_16 A15=MD15 A14=MD14 A13=MD13 A12=MD12 A11=MD11 A10=MD10 A9=MD9 A8=MD8 A7=MD7 A6=MD6 A5=MD5 \
+A4=MD4 A3=MD3 A2=MD2 A1=MD1 A0=MD0 B15=R15 B14=R14 B13=R13 B12=R12 B11=R11 B10=R10 B9=R9 B8=R8 B7=R7 B6=R6 B5=R5 \
+B4=R4 B3=R3 B2=R2 B1=R1 B0=R0 greater=OK
+
+
+# mux per il cash da erogare, scegli in base al risultato del >
+.subckt MUX2_10b SEL=OK inA9=MR9 inA8=MR8 inA7=MR7 inA6=MR6 inA5=MR5 inA4=MR4 inA3=MR3 inA2=MR2 inA1=MR1 inA0=MR0 \
+inB9=ZCR9 inB8=ZCR8 inB7=ZCR7 inB6=ZCR6 inB5=ZCR5 inB4=ZCR4 inB3=ZCR3 inB2=ZCR2 inB1=ZCR1 inB0=ZCR0 \
+out9=CDE9 out8=CDE8 out7=CDE7 out6=CDE6 out5=CDE5 out4=CDE4 out3=CDE3 out2=CDE2 out1=CDE1 out0=CDE0
+
+
+# file modelli
+.search zero10b.blif
+.search zero16b.blif
+.search registro1.blif
+.search mux10in.blif
+.search extender.blif
+.search shifter16.blif
+.search mux16in.blif
+.search greaterThan16.blif

@@ -1,0 +1,9 @@
+#-------------------
+#   registro a 1 bit
+#-------------------
+
+.model REG1
+.inputs in
+.outputs out
+.latch in out re NIL 0
+.end

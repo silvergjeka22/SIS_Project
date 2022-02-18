@@ -1,0 +1,13 @@
+#--------------------
+# registro a 2 bit
+#--------------------
+
+.model REG2
+.inputs A1 A0
+.outputs O1 O0
+
+.subckt REG1 in=A1 out=O1
+.subckt REG1 in=A0 out=O0
+
+.search registro1.blif
+.end

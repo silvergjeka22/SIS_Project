@@ -1,0 +1,80 @@
+#-----------------------
+#   file FSM
+#   Legenda:
+#   B_IN = bancomat_inserito
+#   C[4] = codice
+#   OK = cash_ok
+#   BL = blocco
+#
+#   R = reinserire_codice
+#   AB = abilita_erogazione
+#   BB = blocco_bancomat
+#   CD = check_disponibilità
+#   TC = tentativi_conteggio 
+#-------------------------
+
+.model FSM
+.inputs  B_IN C3 C2 C1 C0 OK BL
+.outputs R AB BB CD TC
+
+# tabella delle transizioni
+.start_kiss
+.i 7
+.o 5
+.p 29
+.s 9   
+.r BI   
+
+# stato di start
+0------ BI BI 00000
+1------ BI C1 00000
+
+# primo codice
+-0101-- C1 C2 00000
+-1----- C1 C2E 00000
+--0---- C1 C2E 00000
+---1--- C1 C2E 00000
+----0-- C1 C2E 00000
+
+# secondo codice
+-0101-- C2 C3 00001
+-1----- C2 C3E 00001
+--0---- C2 C3E 00001
+---1--- C2 C3E 00001
+----0-- C2 C3E 00001
+
+# terzo codice
+-0000-- C3 CD 00010
+-1----0 C3 C1 10000
+--1---0 C3 C1 10000
+---1--0 C3 C1 10000
+----1-0 C3 C1 10000
+-1----1 C3 B 00100
+--1---1 C3 B 00100
+---1--1 C3 B 00100
+----1-1 C3 B 00100
+
+# gestione errori
+------- C2E C3E 00001
+------1 C3E B 00100
+------0 C3E C1 10000
+
+# gestione del blocco
+1------ B B 00100
+0------ B BI 00000
+
+# gestione del check e eventuale erogazione
+-----1- CD AE 01000
+------- AE BI 00000
+-----0- CD BI 00000
+
+.end_kiss
+.end
+
+
+
+
+
+
+
+

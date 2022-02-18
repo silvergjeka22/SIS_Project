@@ -1,0 +1,13 @@
+#-----------------------------------------------
+#   XNOR
+#   Ritorna 1 solo quando i due bit sono uguali
+#-----------------------------------------------
+
+.model XNOR
+.inputs A B
+.outputs X
+
+.names A B X
+00 1
+11 1
+.end

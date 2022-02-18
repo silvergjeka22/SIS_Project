@@ -1,0 +1,25 @@
+read_blif elaborazione.blif
+
+echo "File elaborazione.blif"
+echo ""
+
+echo "Statistiche pre-ottimizzazione:"
+print_stats
+
+echo "---------------------"
+echo "Ottimizzazione:"
+echo ""
+
+echo "full_simplify:"
+full_simplify
+print_stats
+echo "Tre chiamate a script.rugged:"
+source script.rugged
+print_stats
+source script.rugged
+print_stats
+source script.rugged
+print_stats
+echo "fx:"
+fx
+print_stats
